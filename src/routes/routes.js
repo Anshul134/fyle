@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const bank = require('../server_controller/banks');
-
+const generateToken = require('../server_controller/generateToken');
 //Middleware to check authorization
 const checkAuth = require('../middlewares/check-auth');
 
@@ -13,7 +13,7 @@ const checkAuth = require('../middlewares/check-auth');
 	| @Ouptut Response : JWT token
 	| @Access: Public
 */
-router.get('/getToken', checkAuth, (req, res) => {
+router.get('/getToken', (req, res) => {
 	generateToken.getJWT(req, res);
 });
 
