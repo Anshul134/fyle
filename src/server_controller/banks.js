@@ -26,5 +26,6 @@ module.exports = {
 				else	
 					res.send({status:400, message : appData.messages.NO_BRANCH});	 
 				});
-	}
+	},
+	
 };
