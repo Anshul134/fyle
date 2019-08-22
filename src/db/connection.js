@@ -1,18 +1,11 @@
-let mysql = require('mysql');
+const Pool = require('pg').Pool
 
-let db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-  });
-
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL
 });
 
+pool.on('connect', () => {
+  console.log('connected to the db');
+});
 
- module.exports= db; 
+ module.exports= pool; 
