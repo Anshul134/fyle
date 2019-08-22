@@ -6,6 +6,9 @@ const generateToken = require('../server_controller/generateToken');
 //Middleware to check authorization
 const checkAuth = require('../middlewares/check-auth');
 
+router.get('/', (req, res) => {
+	res.send("asdsa")
+});
 /*| @Route /getToken/
 	| @Method GET
 	| @Desc Fetch JWT Token
