@@ -7,7 +7,7 @@ module.exports = {
 				console.log("here",req.query);
         bankModel.oneBranch(ifsc)
                  .then( (data) => {
-									 if(data && data.length)
+									 if(data)
 										 res.send({status: 200, data});
 									else	
 										res.send({status:400, message : appData.messages.NO_BRANCH});	 
