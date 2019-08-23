@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
     try {
          console.log("\n\n\nheader::::::::::",req.headers['authorization']);
         //let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
-        const {token} = req.headers['x-access-token'] || req.headers.authorization || ( (req.method === "GET") ? req.query : req.body );
+        const token = req.headers['x-access-token'] || req.headers['authorization'] || ( (req.method === "GET") ? req.query : req.body );
        console.log("\n\n\ntoken::::::::::::::", {token})
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         
