@@ -3,8 +3,9 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
     try {
-        const {token} = (req.method === "GET") ? req.query : req.body;
-        console.log(jwt.verify(token, process.env.JWT_SECRET))
+        let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
+        const {token} = req.headers['x-access-token'] || req.headers['authorization'] || ( (req.method === "GET") ? req.query : req.body );
+       
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         
         req.userData = decoded;
