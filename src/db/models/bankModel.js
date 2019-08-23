@@ -1,5 +1,5 @@
 const sql_queries = require('../utils/sql');
-
+const db = require('../connection');
 
 module.exports = {
     oneBranch : (body) => {

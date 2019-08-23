@@ -8,8 +8,8 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 
 //DB Connection
-const db = require('./src/db/connection');
-global.db = db
+// const db = require('./src/db/connection');
+// global.db = db
 app.set('view engine', 'handlebars');
 app.engine( 'handlebars', exphbs({
     extname: 'handlebars',
