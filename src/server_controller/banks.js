@@ -18,6 +18,7 @@ module.exports = {
 	},
 	fetch_all : (req, res) => {
 		let {name, city} = req.query;
+		console.log("\n\n\nquery:::::::::::::::::", req.query);
 		name = name.toUpperCase();
 		city = city.toUpperCase();
 		const limit = (req.query.limit) ? req.query.limit : 25;
