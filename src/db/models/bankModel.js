@@ -22,6 +22,7 @@ module.exports = {
     },
     fetch_all : (body) => {
         return new Promise( (resolve, reject) => {
+            console.log("body>>>>>>>>", body );
             db.query(sql_queries.FETCH_ALL, [body.name, body.city], (err, data) => {
                 if(err) {
                     console.log("\n\n\nerror in models/ onebranch>>>>>", err);

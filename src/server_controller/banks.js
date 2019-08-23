@@ -20,9 +20,9 @@ module.exports = {
 		const {name, city} = req.query;
 		const body = {name, city};
 		bankModel.fetch_all(body) 
-				.then( (data) => {
-					if(data && data.length)
-						res.send({status: 200, data});
+				.then( ({rows}) => {
+					if(rows)
+						res.send({status: 200, rows});
 				else	
 					res.send({status:400, message : appData.messages.NO_BRANCH});	 
 				});
