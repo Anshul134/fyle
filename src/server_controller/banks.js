@@ -6,9 +6,9 @@ module.exports = {
 				const {ifsc} = req.query;
 				console.log("here",req.query);
         bankModel.oneBranch(ifsc)
-                 .then( (data) => {
-									 if(data)
-										 res.send({status: 200, data});
+                 .then( ({rows}) => {
+									 if(rows)
+										 res.send({status: 200, rows});
 									else	
 										res.send({status:400, message : appData.messages.NO_BRANCH});	 
 								 })//.err( (err) => {

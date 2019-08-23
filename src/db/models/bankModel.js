@@ -10,7 +10,7 @@ module.exports = {
                     console.log("\n\n\nerror in models/ onebranch>>>>>", err);
                     reject(err);
                 }
-                console.log(data[rows]);
+                console.log("\n\n\n>>>>>>>",data);
                 resolve(data);
             })
                     // .then( (data) => {
