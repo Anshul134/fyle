@@ -3,23 +3,23 @@ const appData = require('../appDataObj');
 
 module.exports = {
     fetchOneBranch : (req, res) => {
-				const {ifsc} = req.query;
+				let {ifsc} = req.query;
+				ifsc = ifsc.toUpperCase();
 				const limit = (req.query.limit) ? req.query.limit : 25;
 				const  offset = (req.query.offset) ? req.query.offset : 0;
 				console.log("here",req.query);
         bankModel.oneBranch({ifsc, limit, offset})
                  .then( ({rows}) => {
-									 if(rows)
-										 res.send({status: 200, rows});
-									else	
-										res.send({status:400, message : appData.messages.NO_BRANCH});	 
-								 })//.err( (err) => {
-								// 	 console.log("\n\n\nerror in fetchonebranch>>>>>>>>>", err);
-								// 	 res.send({status:500, message: app.messages.WRONG});
-								//  });
+					if(rows)
+						res.send({status: 200, rows});
+					else	
+						res.send({status:400, message : appData.messages.NO_BRANCH});	 
+				})
 	},
 	fetch_all : (req, res) => {
-		const {name, city} = req.query;
+		let {name, city} = req.query;
+		name = name.toUpperCase();
+		city = city.toUpperCase();
 		const limit = (req.query.limit) ? req.query.limit : 25;
 		const  offset = (req.query.offset) ? req.query.offset : 0;
 		const body = {name, city, limit, offset};
@@ -27,8 +27,8 @@ module.exports = {
 				.then( ({rows}) => {
 					if(rows)
 						res.send({status: 200, rows});
-				else	
-					res.send({status:400, message : appData.messages.NO_BRANCH});	 
+					else	
+						res.send({status:400, message : appData.messages.NO_BRANCH});	 
 				});
 	},
 	
